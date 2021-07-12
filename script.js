@@ -48,34 +48,33 @@ function addLaunch (name, date, hour) {
     
   }
 
-  function convertDate(date){
-    const datearray = date.split("-");
-    return datearray[2] + '-' + datearray[1] + '-' + datearray[0];
-}
+  
 
 //fetch API and iterate through results
-fetch('https://ll.thespacedevs.com/2.2.0/launch/upcoming/?format=json').then(res => res.json()).then(res => {
+fetch('https://ll.thespacedevs.com/2.2.0/launch/upcoming/?hide_recent_previous=true&format=json').then(res => res.json()).then(res => {
   
     const data = res.results;
+    let date = null;
 
     data.forEach(e => {
     
+    date = new Date(e.net);
     const name = e.name;
-    const date = convertDate(e.net.slice(0, 10));
-    const hour = e.net.slice(11, 19);
+    const strdate = date.getDate() + '-' + (date.getMonth()+1).toString().padStart(2, '0') + '-' + date.getFullYear().toString();
+    const hour = date.getHours().toString().padStart(2, '0') +  ':' + date.getMinutes().toString().padStart(2, '0') + ':' + date.getSeconds().toString().padStart(2, '0');
 
-    addLaunch(name, date, hour);
+    addLaunch(name, strdate, hour);
     
     });
 
-    // const launch = document.getElementsByClassName('launch'); // (OnClick event)
+    // const launch = document.getElementsByClassName('launch'); // (<li> OnClick event)
 
     // for(let i = 0; i < launch.length; i++){
 
     //   launch[i].addEventListener('click', (e) => {
     //     console.log(e);
-    // })
-    
-    // }
-    
+    //     //add code here
+
+    // })}
+
   }).catch(err => console.log(err))
