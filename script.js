@@ -48,15 +48,20 @@ function addLaunch (name, date, hour) {
     
   }
 
+  function convertDate(date){
+    const datearray = date.split("-");
+    return datearray[2] + '-' + datearray[1] + '-' + datearray[0];
+}
+
 //fetch API and iterate through results
-fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?format=json').then(res => res.json()).then(res => {
+fetch('https://ll.thespacedevs.com/2.2.0/launch/upcoming/?format=json').then(res => res.json()).then(res => {
   
     const data = res.results;
 
     data.forEach(e => {
     
     const name = e.name;
-    const date = e.net.slice(0, 10);
+    const date = convertDate(e.net.slice(0, 10));
     const hour = e.net.slice(11, 19);
 
     addLaunch(name, date, hour);
