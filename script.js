@@ -1,5 +1,8 @@
+
 document.body.innerHTML='<div id="launch-widget"><ul id="launch-list"></ul></div>'; // create the widget div & ul container
 const ul = document.getElementById('launch-list');
+
+const launch = document.getElementsByClassName('launch');
 
 function addLaunch (name, date, hour) {
 
@@ -39,7 +42,7 @@ function addLaunch (name, date, hour) {
     // insert date (data) into newMetaDate
     let newDate = document.createTextNode(date);
     newMetaDate.appendChild(newDate);
-
+    
     // insert hour (data) into newMetaHour
     let newHour = document.createTextNode(hour);
     newMetaHour.appendChild(newHour);
@@ -48,7 +51,6 @@ function addLaunch (name, date, hour) {
     
   }
 
-  
 
 //fetch API and iterate through results
 fetch('https://ll.thespacedevs.com/2.2.0/launch/upcoming/?hide_recent_previous=true&format=json').then(res => res.json()).then(res => {
@@ -66,15 +68,12 @@ fetch('https://ll.thespacedevs.com/2.2.0/launch/upcoming/?hide_recent_previous=t
     addLaunch(name, strdate, hour);
     
     });
-
-    // const launch = document.getElementsByClassName('launch'); // (<li> OnClick event)
-
+    
     // for(let i = 0; i < launch.length; i++){
-
-    //   launch[i].addEventListener('click', (e) => {
+    //   launch[i].addEventListener('click', (e) => {  // (<li> OnClick event)
     //     console.log(e);
     //     //add code here
-
     // })}
 
+    
   }).catch(err => console.log(err))

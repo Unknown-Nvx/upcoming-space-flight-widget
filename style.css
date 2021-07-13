@@ -5,12 +5,14 @@
 
 .launch{
     background-color: #eee;
-    border-left: 4px solid #4DB2EC;
+    border-left: 3px solid #4DB2EC;
     list-style: none;
     font-family: Helvetica, sans-serif;
     height: 50px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     border-radius: 0 4px 4px 0;
+    box-shadow: 0px 2px 4px 0px #D6D6D6;
+    color: #707070;
 }
 
 /*.launch:nth-child(2n){ 
@@ -33,14 +35,14 @@
 .title{
     margin: 0;
     display: inline-block;
-    color: #707070;
     font-weight: normal;
     font-size: 13px;
     margin-left: 10px;
 }
 
 .meta-container{
-    line-height: 25px;
+    line-height: 24px;
+    margin-top: 1px;
     text-align: right;
     position: relative;
     right: 10px;
@@ -50,6 +52,6 @@
 .meta{
     margin: 0;
     display: block;
-    color: #707070;
     font-size: 13px;
+    background-color: rgba(255,255,255,0.1);
 }
