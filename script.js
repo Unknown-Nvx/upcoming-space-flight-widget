@@ -3,6 +3,7 @@ document.body.innerHTML='<div id="launch-widget"><ul id="launch-list"></ul></div
 const ul = document.getElementById('launch-list');
 
 const launch = document.getElementsByClassName('launch');
+const numberOfItems = 10; //put a value between 1-10  
 
 function addLaunch (name, date, hour) {
 
@@ -53,7 +54,7 @@ function addLaunch (name, date, hour) {
 
 
 //fetch API and iterate through results
-fetch('https://ll.thespacedevs.com/2.2.0/launch/upcoming/?hide_recent_previous=true&format=json').then(res => res.json()).then(res => {
+fetch(`https://ll.thespacedevs.com/2.2.0/launch/upcoming/?hide_recent_previous=true&format=json&limit=${numberOfItems}`).then(res => res.json()).then(res => {
   
     const data = res.results;
     let date = null;
